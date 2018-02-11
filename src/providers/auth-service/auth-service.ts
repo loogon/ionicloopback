@@ -3,43 +3,28 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ApiService } from '../api-service';
 import 'rxjs/add/operator/map';
-
-export class User {
-  name: string;
-  email: string;
-  id: string;
-  tokenId: string;
-
-
-  constructor(name: string, email: string, id: string, tokenId: string) {
-    this.name = name;
-    this.email = email;
-    this.id = id;
-    this.tokenId = tokenId;
-  }
-}
+import { BASE_URL, API_VERSION } from '../../base.url';
+import { LoopBackConfig } from '../../ng2';
+import { User, UserInterface, AccessToken } from '../../ng2/models'
+import { UserApi } from '../../ng2/services';
 
 @Injectable()
 export class AuthService {
-  currentUser: User = new User('', '', '', '');
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private userApi: UserApi) {
+    LoopBackConfig.setBaseURL(BASE_URL);
+    LoopBackConfig.setApiVersion(API_VERSION);
   }
   public login(credentials, isRememberMe) {
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
-      return this.apiService.login(credentials.email, credentials.password, isRememberMe).map((res: any) => {
-        let user = res.user;
-        this.currentUser = new User(user.name, user.email, res.userId, res.id);
-        return res;
+      let userInterface: any = {};
+      userInterface.username = credentials.email;
+      userInterface.password = credentials.password;
+      let user = new User(userInterface);
+      return this.userApi.login(user).map(ret => {
+        return ret;
       });
-      // return Observable.create(observer => {
-      //   // dummy request backend server
-      //   let access = (credentials.password === "pass" && credentials.email === "email");
-      //   this.currentUser = new User('wd', 'wd@wd.com');
-      //   observer.next(access);
-      //   observer.complete();
-      // });
     }
   }
 
@@ -54,20 +39,15 @@ export class AuthService {
     }
   }
 
-  public getUserInfo() : User {
-    return this.currentUser;
+  public getUserInfo() {
+    let curUser = this.userApi.getCachedCurrent();
+    return curUser;
   }
 
   public logout() {
-    return this.apiService.logout(this.currentUser.tokenId).map(ret => {
-      this.currentUser = null;
+    return this.userApi.logout().map(ret => {
       return ret;
     });
-    // return Observable.create(observer => {
-    //   this.currentUser = null;
-    //   observer.next(true);
-    //   observer.complete();
-    // });
   }
 }
 

@@ -15,8 +15,8 @@ export class HomePage {
     if (info === null) {
       return;
     }
-    this.username = info['name'];
-    this.email = info['email'];
+    this.username = info.username || '';
+    this.email = info.email || '';
   }
 
   public logout() {

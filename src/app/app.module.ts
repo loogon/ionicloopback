@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiService } from '../providers/api-service';
 import { AuthService, AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { SDKBrowserModule } from '../ng2/index'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthService, AuthServiceProvider } from '../providers/auth-service/auth
   imports: [
     BrowserModule,
     HttpClientModule,
+    SDKBrowserModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

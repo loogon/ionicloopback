@@ -27,21 +27,27 @@ export class LoginPage {
 
   public login() {
     this.showLoading();
-    this.auth.login(this.registerCredentials).subscribe(allowed => {
+    this.auth.login(this.registerCredentials, false).subscribe(allowed => {
       if (allowed) {
         this.navCtrl.setRoot(HomePage);
       } else {
-        this.showError('Access Denied');
+        this.showError('拒绝访问');
       }
     },
       error => {
-        this.showError(error);
+        let errInfo = '';
+        if (typeof error === 'string' && error !== '') {
+          errInfo = error;
+        } else {
+          errInfo = error.message || '';
+        }
+        this.showError(`登录失败(${errInfo})`);
       });
   }
 
   showLoading() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: '登录中...',
       dismissOnPageChange: true
     });
     this.loading.present();
@@ -50,11 +56,11 @@ export class LoginPage {
   showError(text) {
     this.loading.dismiss();
     let alert = this.alertCtrl.create({
-      title: 'Fail',
+      title: '错误',
       subTitle: text,
       buttons: ['OK']
     });
-    alert.present(prompt);
+    alert.present();
   }
 
   ionViewDidLoad() {
