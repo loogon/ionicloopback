@@ -1,16 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { ApiService } from '../api-service';
 import 'rxjs/add/operator/map';
 import { BASE_URL, API_VERSION } from '../../base.url';
 import { LoopBackConfig } from '../../ng2';
-import { User, UserInterface, AccessToken } from '../../ng2/models'
+import { UserInterface } from '../../ng2/models'
 import { UserApi } from '../../ng2/services';
 
 @Injectable()
 export class AuthService {
-  constructor(private apiService: ApiService, private userApi: UserApi) {
+  constructor(private userApi: UserApi) {
     LoopBackConfig.setBaseURL(BASE_URL);
     LoopBackConfig.setApiVersion(API_VERSION);
   }
@@ -18,11 +17,10 @@ export class AuthService {
     if (credentials.email === null || credentials.password === null) {
       return Observable.throw("Please insert credentials");
     } else {
-      let userInterface: any = {};
-      userInterface.username = credentials.email;
-      userInterface.password = credentials.password;
-      let user = new User(userInterface);
-      return this.userApi.login(user).map(ret => {
+      return this.userApi.login(<UserInterface>({
+        username: credentials.email,
+        password: credentials.password
+      })).map(ret => {
         return ret;
       });
     }
@@ -40,8 +38,7 @@ export class AuthService {
   }
 
   public getUserInfo() {
-    let curUser = this.userApi.getCachedCurrent();
-    return curUser;
+    return this.userApi.getCachedCurrent();
   }
 
   public logout() {

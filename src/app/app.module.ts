@@ -8,12 +8,16 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { CustomerPage } from '../pages/customer/customer';
+import { CustomerDetailsPage } from '../pages/customer-details/customer-details';
+import { CustomerEditPage } from '../pages/customer-edit/customer-edit';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiService } from '../providers/api-service';
 import { AuthService, AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { SDKBrowserModule } from '../ng2/index'
+import { MessageboxService } from '../providers/messagebox-service/messagebox-service';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { SDKBrowserModule } from '../ng2/index'
     HomePage,
     ListPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CustomerPage,
+    CustomerDetailsPage,
+    CustomerEditPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,10 @@ import { SDKBrowserModule } from '../ng2/index'
     HomePage,
     ListPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    CustomerPage,
+    CustomerDetailsPage,
+    CustomerEditPage
   ],
   providers: [
     StatusBar,
@@ -43,7 +53,8 @@ import { SDKBrowserModule } from '../ng2/index'
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ApiService,
     AuthServiceProvider,
-    AuthService
+    AuthService,
+    MessageboxService
   ]
 })
 export class AppModule { }
