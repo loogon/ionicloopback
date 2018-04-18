@@ -1,1 +1,2 @@
-### :point_right: This starter repo has moved to the [ionic-team/starters](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/sidemenu) repo! :point_left:
+[How to use loopback api in angular2](https://loopback.io/doc/en/lb2/Angular-2-SDK.html)
+The module ng2 generate by [loopback-sdk-builder](https://github.com/mean-expert-official/loopback-sdk-builder) from loopback api.
