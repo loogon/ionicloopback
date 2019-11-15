@@ -5,7 +5,9 @@ import {
   Report,
   ExposureCount,
   Dispatch,
-  Accessory
+  Accessory,
+  DeviceCode,
+  Device
 } from '../index';
 
 declare var Object: any;
@@ -41,6 +43,7 @@ export interface EquipmentInterface {
   "createdBy"?: any;
   "lastUpdatedBy"?: any;
   "customerId"?: any;
+  "deviceId"?: any;
   createdBy?: User;
   lastUpdatedBy?: User;
   customer?: Customer;
@@ -48,6 +51,8 @@ export interface EquipmentInterface {
   exposureCounts?: ExposureCount[];
   dispatchLists?: Dispatch[];
   accessoryList?: Accessory[];
+  deviceCode?: DeviceCode;
+  device?: Device;
 }
 
 export class Equipment implements EquipmentInterface {
@@ -82,6 +87,7 @@ export class Equipment implements EquipmentInterface {
   "createdBy": any;
   "lastUpdatedBy": any;
   "customerId": any;
+  "deviceId": any;
   createdBy: User;
   lastUpdatedBy: User;
   customer: Customer;
@@ -89,6 +95,8 @@ export class Equipment implements EquipmentInterface {
   exposureCounts: ExposureCount[];
   dispatchLists: Dispatch[];
   accessoryList: Accessory[];
+  deviceCode: DeviceCode;
+  device: Device;
   constructor(data?: EquipmentInterface) {
     Object.assign(this, data);
   }
@@ -248,6 +256,10 @@ export class Equipment implements EquipmentInterface {
           name: 'customerId',
           type: 'any'
         },
+        "deviceId": {
+          name: 'deviceId',
+          type: 'any'
+        },
       },
       relations: {
         createdBy: {
@@ -305,6 +317,22 @@ export class Equipment implements EquipmentInterface {
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'equipmentId'
+        },
+        deviceCode: {
+          name: 'deviceCode',
+          type: 'DeviceCode',
+          model: 'DeviceCode',
+          relationType: 'hasOne',
+                  keyFrom: 'id',
+          keyTo: 'equipmentId'
+        },
+        device: {
+          name: 'device',
+          type: 'Device',
+          model: 'Device',
+          relationType: 'belongsTo',
+                  keyFrom: 'deviceId',
+          keyTo: 'id'
         },
       }
     }

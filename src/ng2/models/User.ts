@@ -5,6 +5,7 @@ import {
 
 declare var Object: any;
 export interface UserInterface {
+  "workType"?: number;
   "realm"?: string;
   "username"?: string;
   "challenges"?: any;
@@ -21,6 +22,7 @@ export interface UserInterface {
 }
 
 export class User implements UserInterface {
+  "workType": number;
   "realm": string;
   "username": string;
   "challenges": any;
@@ -67,6 +69,11 @@ export class User implements UserInterface {
       path: 'Users',
       idName: 'id',
       properties: {
+        "workType": {
+          name: 'workType',
+          type: 'number',
+          default: 0
+        },
         "realm": {
           name: 'realm',
           type: 'string'

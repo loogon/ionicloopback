@@ -85,6 +85,18 @@ import { DisposeRecordApi } from './services/custom/DisposeRecord';
 import { AccessoryStoreApi } from './services/custom/AccessoryStore';
 import { SummaryStatementApi } from './services/custom/SummaryStatement';
 import { SystemConfigApi } from './services/custom/SystemConfig';
+import { WdCryptoApi } from './services/custom/WdCrypto';
+import { DogInfoApi } from './services/custom/DogInfo';
+import { CodeInfoApi } from './services/custom/CodeInfo';
+import { CdCodeInfoApi } from './services/custom/CdCodeInfo';
+import { DeviceCodeApi } from './services/custom/DeviceCode';
+import { DeviceApi } from './services/custom/Device';
+import { DeviceDetailApi } from './services/custom/DeviceDetail';
+import { DeviceMachineApi } from './services/custom/DeviceMachine';
+import { DeviceMachineLogApi } from './services/custom/DeviceMachineLog';
+import { DeviceMachineSoftApi } from './services/custom/DeviceMachineSoft';
+import { DeviceMachineDetailApi } from './services/custom/DeviceMachineDetail';
+import { DebugCodeInfoApi } from './services/custom/DebugCodeInfo';
 /**
 * @module SDKBrowserModule
 * @description
@@ -152,6 +164,18 @@ export class SDKBrowserModule {
         AccessoryStoreApi,
         SummaryStatementApi,
         SystemConfigApi,
+        WdCryptoApi,
+        DogInfoApi,
+        CodeInfoApi,
+        CdCodeInfoApi,
+        DeviceCodeApi,
+        DeviceApi,
+        DeviceDetailApi,
+        DeviceMachineApi,
+        DeviceMachineLogApi,
+        DeviceMachineSoftApi,
+        DeviceMachineDetailApi,
+        DebugCodeInfoApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

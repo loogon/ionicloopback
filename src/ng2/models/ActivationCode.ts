@@ -18,6 +18,7 @@ export interface ActivationCodeInterface {
   "launchedAt"?: Date;
   "dogWrittenAt"?: Date;
   "expireAt"?: Date;
+  "dogVersion"?: string;
   "comment"?: string;
   "createdAt"?: Date;
   "lastUpdatedAt"?: Date;
@@ -43,6 +44,7 @@ export class ActivationCode implements ActivationCodeInterface {
   "launchedAt": Date;
   "dogWrittenAt": Date;
   "expireAt": Date;
+  "dogVersion": string;
   "comment": string;
   "createdAt": Date;
   "lastUpdatedAt": Date;
@@ -142,6 +144,10 @@ export class ActivationCode implements ActivationCodeInterface {
         "expireAt": {
           name: 'expireAt',
           type: 'Date'
+        },
+        "dogVersion": {
+          name: 'dogVersion',
+          type: 'string'
         },
         "comment": {
           name: 'comment',

@@ -1,20 +1,13 @@
 /* tslint:disable */
 import {
-  User,
-  Equipment
+  User
 } from '../index';
 
 declare var Object: any;
-export interface AccessoryInterface {
-  "accessoryName": string;
-  "accessoryModel"?: string;
+export interface DeviceCodeInterface {
+  "accessKey"?: string;
   "softwareVersion"?: string;
-  "accessoryNumber"?: string;
-  "circuitBaseNumber"?: string;
-  "boardSerialNo"?: string;
-  "accessoryCount"?: number;
-  "price"?: number;
-  "category"?: string;
+  "version"?: string;
   "comments"?: string;
   "createdAt"?: Date;
   "lastUpdatedAt"?: Date;
@@ -24,19 +17,12 @@ export interface AccessoryInterface {
   "equipmentId"?: any;
   createdBy?: User;
   lastUpdatedBy?: User;
-  equipment?: Equipment;
 }
 
-export class Accessory implements AccessoryInterface {
-  "accessoryName": string;
-  "accessoryModel": string;
+export class DeviceCode implements DeviceCodeInterface {
+  "accessKey": string;
   "softwareVersion": string;
-  "accessoryNumber": string;
-  "circuitBaseNumber": string;
-  "boardSerialNo": string;
-  "accessoryCount": number;
-  "price": number;
-  "category": string;
+  "version": string;
   "comments": string;
   "createdAt": Date;
   "lastUpdatedAt": Date;
@@ -46,25 +32,24 @@ export class Accessory implements AccessoryInterface {
   "equipmentId": any;
   createdBy: User;
   lastUpdatedBy: User;
-  equipment: Equipment;
-  constructor(data?: AccessoryInterface) {
+  constructor(data?: DeviceCodeInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Accessory`.
+   * i.e. `DeviceCode`.
    */
   public static getModelName() {
-    return "Accessory";
+    return "DeviceCode";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of Accessory for dynamic purposes.
+  * This method creates an instance of DeviceCode for dynamic purposes.
   **/
-  public static factory(data: AccessoryInterface): Accessory{
-    return new Accessory(data);
+  public static factory(data: DeviceCodeInterface): DeviceCode{
+    return new DeviceCode(data);
   }
   /**
   * @method getModelDefinition
@@ -75,45 +60,21 @@ export class Accessory implements AccessoryInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'Accessory',
-      plural: 'Accessories',
-      path: 'Accessories',
+      name: 'DeviceCode',
+      plural: 'DeviceCodes',
+      path: 'DeviceCodes',
       idName: 'id',
       properties: {
-        "accessoryName": {
-          name: 'accessoryName',
-          type: 'string'
-        },
-        "accessoryModel": {
-          name: 'accessoryModel',
+        "accessKey": {
+          name: 'accessKey',
           type: 'string'
         },
         "softwareVersion": {
           name: 'softwareVersion',
           type: 'string'
         },
-        "accessoryNumber": {
-          name: 'accessoryNumber',
-          type: 'string'
-        },
-        "circuitBaseNumber": {
-          name: 'circuitBaseNumber',
-          type: 'string'
-        },
-        "boardSerialNo": {
-          name: 'boardSerialNo',
-          type: 'string'
-        },
-        "accessoryCount": {
-          name: 'accessoryCount',
-          type: 'number'
-        },
-        "price": {
-          name: 'price',
-          type: 'number'
-        },
-        "category": {
-          name: 'category',
+        "version": {
+          name: 'version',
           type: 'string'
         },
         "comments": {
@@ -161,14 +122,6 @@ export class Accessory implements AccessoryInterface {
           model: 'User',
           relationType: 'belongsTo',
                   keyFrom: 'lastUpdatedBy',
-          keyTo: 'id'
-        },
-        equipment: {
-          name: 'equipment',
-          type: 'Equipment',
-          model: 'Equipment',
-          relationType: 'belongsTo',
-                  keyFrom: 'equipmentId',
           keyTo: 'id'
         },
       }

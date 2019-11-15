@@ -10,17 +10,17 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { Accessory } from '../../models/Accessory';
+import { DeviceDetail } from '../../models/DeviceDetail';
 import { SocketConnection } from '../../sockets/socket.connections';
 import { User } from '../../models/User';
-import { Equipment } from '../../models/Equipment';
+import { Device } from '../../models/Device';
 
 
 /**
- * Api services for the `Accessory` model.
+ * Api services for the `DeviceDetail` model.
  */
 @Injectable()
-export class AccessoryApi extends BaseLoopBackApi {
+export class DeviceDetailApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -46,13 +46,13 @@ export class AccessoryApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Accessory` object.)
+   * This usually means the response is a `DeviceDetail` object.)
    * </em>
    */
   public getCreatedBy(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Accessories/:id/createdBy";
+    "/DeviceDetails/:id/createdBy";
     let _routeParams: any = {
       id: id
     };
@@ -76,13 +76,13 @@ export class AccessoryApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Accessory` object.)
+   * This usually means the response is a `DeviceDetail` object.)
    * </em>
    */
   public getLastUpdatedBy(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Accessories/:id/lastUpdatedBy";
+    "/DeviceDetails/:id/lastUpdatedBy";
     let _routeParams: any = {
       id: id
     };
@@ -94,7 +94,7 @@ export class AccessoryApi extends BaseLoopBackApi {
   }
 
   /**
-   * Fetches belongsTo relation equipment.
+   * Fetches belongsTo relation device.
    *
    * @param {any} id Tracked id
    *
@@ -106,13 +106,13 @@ export class AccessoryApi extends BaseLoopBackApi {
    *
    * <em>
    * (The remote method definition does not provide any description.
-   * This usually means the response is a `Accessory` object.)
+   * This usually means the response is a `DeviceDetail` object.)
    * </em>
    */
-  public getEquipment(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
+  public getDevice(id: any, refresh: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/Accessories/:id/equipment";
+    "/DeviceDetails/:id/device";
     let _routeParams: any = {
       id: id
     };
@@ -125,9 +125,9 @@ export class AccessoryApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `Accessory`.
+   * i.e. `DeviceDetail`.
    */
   public getModelName() {
-    return "Accessory";
+    return "DeviceDetail";
   }
 }

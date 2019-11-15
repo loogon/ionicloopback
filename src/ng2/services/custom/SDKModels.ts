@@ -36,6 +36,18 @@ import { DisposeRecord } from '../../models/DisposeRecord';
 import { AccessoryStore } from '../../models/AccessoryStore';
 import { SummaryStatement } from '../../models/SummaryStatement';
 import { SystemConfig } from '../../models/SystemConfig';
+import { WdCrypto } from '../../models/WdCrypto';
+import { DogInfo } from '../../models/DogInfo';
+import { CodeInfo } from '../../models/CodeInfo';
+import { CdCodeInfo } from '../../models/CdCodeInfo';
+import { DeviceCode } from '../../models/DeviceCode';
+import { Device } from '../../models/Device';
+import { DeviceDetail } from '../../models/DeviceDetail';
+import { DeviceMachine } from '../../models/DeviceMachine';
+import { DeviceMachineLog } from '../../models/DeviceMachineLog';
+import { DeviceMachineSoft } from '../../models/DeviceMachineSoft';
+import { DeviceMachineDetail } from '../../models/DeviceMachineDetail';
+import { DebugCodeInfo } from '../../models/DebugCodeInfo';
 
 export interface Models { [name: string]: any }
 
@@ -79,6 +91,18 @@ export class SDKModels {
     AccessoryStore: AccessoryStore,
     SummaryStatement: SummaryStatement,
     SystemConfig: SystemConfig,
+    WdCrypto: WdCrypto,
+    DogInfo: DogInfo,
+    CodeInfo: CodeInfo,
+    CdCodeInfo: CdCodeInfo,
+    DeviceCode: DeviceCode,
+    Device: Device,
+    DeviceDetail: DeviceDetail,
+    DeviceMachine: DeviceMachine,
+    DeviceMachineLog: DeviceMachineLog,
+    DeviceMachineSoft: DeviceMachineSoft,
+    DeviceMachineDetail: DeviceMachineDetail,
+    DebugCodeInfo: DebugCodeInfo,
     
   };
 
